@@ -4,18 +4,22 @@ import AppBarTab from './AppBarTab';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
-    container: {
+    navigation: {
+        display: 'flex',
+        flexDirection: 'row',
         paddingTop: Constants.statusBarHeight,
         backgroundColor: theme.backGroundColors.appBar,
-        padding: 20
+        padding: 10
     },
+  naviLink: {
+    flexGrow: 1
+  },
 });
 
-
-
 const AppBar = () => {
-    return <View style={styles.container}>
-        <AppBarTab />
+    return <View style={styles.navigation}>
+        <AppBarTab style={styles.naviLink} linkTo='/' linkText='Repositories'/>
+        <AppBarTab style={styles.naviLink} linkTo='signin' linkText='Sign in' />
     </View>;
 };
 

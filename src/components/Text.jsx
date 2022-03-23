@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   },
   fontSizeAppBar: {
     fontSize: theme.fontSizes.appbar,
+    padding: theme.paddings.medium
   },
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
