@@ -1,3 +1,5 @@
+import { Platform } from "react-native-web";
+
 const theme = {
     colors: {
       textPrimary: '#24292e',
@@ -17,7 +19,7 @@ const theme = {
       appbar: 18
     },
     fonts: {
-      main: 'System',
+      main: Platform.OS === 'ios' ? 'Arial' : 'Roboto'
     },
     fontWeights: {
       normal: '400',
