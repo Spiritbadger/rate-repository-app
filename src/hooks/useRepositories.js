@@ -1,6 +1,6 @@
 //import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
-
+//import Constants from 'expo-constants';
 import { GET_REPOSITORIES } from '../graphql/queries';
 
 //Fetch API implementation
@@ -13,7 +13,7 @@ const useRepositories = () => {
     setLoading(true);
 
     // Replace the IP address part with your own IP address!
-    const response = await fetch('http://192.168.100.22:5000/api/repositories');
+    const response = await fetch(Constants.manifest.extra.fetchApiUri);
     const json = await response.json();
 
     setLoading(false);
@@ -24,7 +24,7 @@ const useRepositories = () => {
     fetchRepositories();
   }, []);
 
-  return { repositories, , refetch: fetchRepositories };
+  return { repositories, loading, refetch: fetchRepositories };
 };
 */
 
@@ -34,11 +34,20 @@ const useRepositories = () => {
       fetchPolicy: 'cache-and-network',
     });
 
+    if(loading) {
+      return { data }
+    }
+
+    if (error) {
+      console.log(error)
+    }
+    
     const repositories = data.repositories
     return { repositories }
+    
   };
   
-  
+
 
 
 
