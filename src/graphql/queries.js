@@ -6,6 +6,7 @@ query Repositories {
     totalCount
     edges {
       node {
+        id
         ownerName
         name
         ownerAvatarUrl
