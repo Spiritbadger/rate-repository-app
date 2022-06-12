@@ -1,25 +1,13 @@
-import { View, Pressable } from 'react-native';
+import { View } from 'react-native';
 import Text from './Text';
 import { Link } from "react-router-native";
-//import SignOutButton from './SignOutButton';
-import useSignOut from '../hooks/useSignOut';
+import SignOutButton from './SignOutButton';
 
 const AppBarTab = ( {linkTo, linkText}) => {
 
-    const [signOut] = useSignOut();
-
-  const onSubmit = async () => {
-   
-    try {
-      await signOut();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-    
     if (linkTo === 'signout') {
         return <View>
-            <Pressable onPress={onSubmit}><Text color="appBar" fontSize="appBar" fontWeight="bold">{linkText}</Text></Pressable>
+            <SignOutButton linkText={linkText}/>
         </View>
     }
    else {
