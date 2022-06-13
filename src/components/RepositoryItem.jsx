@@ -43,7 +43,7 @@ const thousandFormatter = (num) => {
 
 const RepositoryItem = ({ item }) => {
     return (
-      <View style={styles.flexContainer}>
+      <View testID="repositoryItem" style={styles.flexContainer}>
 
         <View style={styles.flexItemOnePerRow1}>
         <RepositoryItemImage uri={item.ownerAvatarUrl}/>
