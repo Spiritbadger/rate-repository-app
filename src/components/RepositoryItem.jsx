@@ -1,4 +1,4 @@
-import { View, StyleSheet  } from 'react-native';
+import { View, StyleSheet, Pressable  } from 'react-native';
 import RepositoryItemImage from './RepositoryItemImage';
 import Text from './Text';
 
@@ -15,12 +15,14 @@ const styles = StyleSheet.create({
   flexItemOnePerRow1: {
     flexBasis: '20%',
     padding: 3,
-    
   },
   flexItemOnePerRow2: {
     flexBasis: '80%',
     padding: 3,
-    
+  },
+  lexItemOnePerRow3: {
+    flexBasis: '100%',
+    padding: 5,
   },
   flexItemFourPerRow: {
     flexGrow: 1,
@@ -28,8 +30,19 @@ const styles = StyleSheet.create({
     flexBasis: '25%',
     padding: 3,
     alignItems: 'center',
-    
   },
+  bigButton: {
+    backgroundColor: '#0165d4',
+    padding: 12,
+    margin: 5,
+    borderRadius: 3,
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 15
+  }
 });
 
 const thousandFormatter = (num) => {
@@ -41,7 +54,24 @@ const thousandFormatter = (num) => {
   }
 };
 
-const RepositoryItem = ({ item }) => {
+//const singleRepository = true;
+
+const handlePress = () => {
+  console.log('Github pressed')
+}
+
+const GitHubButton = () => {
+  return (
+    <View style={styles.lexItemOnePerRow3}>
+      <Pressable onPress={handlePress} style={styles.bigButton}>
+      <Text style={styles.buttonText}>Open in GitHub</Text>
+      </Pressable>
+    </View>
+   
+  )
+}
+
+const RepositoryItem = ({ item, singleRepository }) => {
     return (
       <View testID="repositoryItem" style={styles.flexContainer}>
 
@@ -86,7 +116,9 @@ const RepositoryItem = ({ item }) => {
         <View style={styles.flexItemFourPerRow}>
         <Text color='textSecondary'>Rating</Text>
         </View>
-        
+
+        {singleRepository && <GitHubButton/>}
+  
       </View>
     );
   };
